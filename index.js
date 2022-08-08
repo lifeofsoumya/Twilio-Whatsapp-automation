@@ -126,7 +126,7 @@ app.post('/whatsapp', async (req, res) => { // creates webhook
             urlArr.push(urls[i]);
             urlArr.push(" ⚪ ");
         }
-        await sendMsg(urls, senderID);
+        await sendMsg(urlArr, senderID);
         message = "";
     }
 });
