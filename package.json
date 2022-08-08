@@ -8,6 +8,12 @@
   "name": "twilio-whatsapp-automation",
   "version": "1.0.0",
   "main": "index.js",
+  "builds": [
+    { "src": "index.js", "use": "@now/node" }
+],
+"routes": [
+    { "src": "/(.*)", "dest": "index.js" }
+],
   "devDependencies": {},
   "scripts": {
     "start": "node src/index.js",
