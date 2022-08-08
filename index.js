@@ -32,8 +32,8 @@ function sendMsg(message, senderID){
 
     client.messages 
     .create({ 
-        body: "Soumya, You've a task", 
-        from: 'whatsapp:+14155238886',       
+        body: message,
+        from: 'whatsapp:+14155238886',
         to: senderID
     }) 
     .then(message => console.log(message.sid)) 
