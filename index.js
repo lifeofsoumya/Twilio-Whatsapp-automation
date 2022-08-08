@@ -58,7 +58,7 @@ app.post('/whatsapp', async (req, res) => { // creates webhook
     console.log(senderID);
 
     // Write a function to send message back to WhatsApp
-    if(message==='command' || 'commands' || 'list'){
+    if(message.includes('command' || 'commands' || 'list')){
         await sendMsg('Use the Following commands: Hi | link | resume | github | turn off light | list: | post | my day | projects | indgeek | my site | sites | expense | addurl.site.com', senderID);
         message = "";
     }
