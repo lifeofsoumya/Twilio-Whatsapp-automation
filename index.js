@@ -23,6 +23,8 @@ app.listen(port,()=>{
 const accountSid = process.env.TWILIO_ACCOUNT_SID; 
 const authToken = process.env.TWILIO_AUTH_TOKEN; 
 let urls = []; 
+let urlAdd;
+let urlArr = [];
 
 const client = require('twilio')(accountSid, authToken, { 
     lazyLoading: true 
@@ -119,9 +121,9 @@ app.post('/whatsapp', async (req, res) => { // creates webhook
         message = "";
     }
     else if(message.includes('addurl')){
-        let urlAdd = message.replace('addurl.', ''); // adding url
+        urlAdd = message.replace('addurl.', ''); // adding url
         urls.push(urlAdd);
-        let urlArr = [];
+        urlArr = [];
         for(let i = 0; i < urls.length; i++){
             urlArr.push(urls[i]);
             urlArr.push(" ⚪ ");
