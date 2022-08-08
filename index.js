@@ -121,6 +121,11 @@ app.post('/whatsapp', async (req, res) => { // creates webhook
     else if(message.includes('addurl')){
         let urlAdd = message.replace('addurl.', ''); // adding url
         urls.push(urlAdd);
+        let urlArr = [];
+        for(let i = 0; i < urls.length; i++){
+            urlArr.push(urls[i]);
+            urlArr.push(" ⚪ ");
+        }
         await sendMsg(urls, senderID);
         message = "";
     }
