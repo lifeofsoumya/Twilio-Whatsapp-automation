@@ -59,7 +59,7 @@ app.post('/whatsapp', async (req, res) => { // creates webhook
 
     // Write a function to send message back to WhatsApp
     if(message=='command' || 'commands' || 'list'){
-        await sendMsg('Use the Following commands: Hi | link | resume | github | turn off light | list: | post | my day | projects | indgeek | my site | sites | expense', senderID);
+        await sendMsg('Use the Following commands: Hi | link | resume | github | turn off light | list: | post | my day | projects | indgeek | my site | sites | expense | addurl.site.com', senderID);
         message = "";
     }
     else if(message=='hi' || 'hello' || 'hi there'){
@@ -119,7 +119,7 @@ app.post('/whatsapp', async (req, res) => { // creates webhook
         message = "";
     }
     else if(message.includes('addurl')){
-        let urlAdd = message.replace('addurl', ''); // adding url
+        let urlAdd = message.replace('addurl.', ''); // adding url
         urls.push(urlAdd);
         await sendMsg(urls, senderID);
         message = "";
