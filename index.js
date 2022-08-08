@@ -58,7 +58,7 @@ app.post('/whatsapp', async (req, res) => { // creates webhook
     console.log(senderID);
 
     // Write a function to send message back to WhatsApp
-    if(message==='list'){
+    if(message==='list' || message==='commands' || message==='command'){
         await sendMsg('Use the Following commands: Hi | link | resume | github | turn off light | list: | post | my day | projects | indgeek | my site | sites | expense | addurl.site.com', senderID);
         message = "";
     }
@@ -66,7 +66,7 @@ app.post('/whatsapp', async (req, res) => { // creates webhook
         await sendMsg('Hello Soumya', senderID);
         message = "";
     }
-    else if(message==='link' || 'links'){
+    else if(message==='link' || message=== 'links'){
         await sendMsg('Your links are here: https://soumyamondal.com/link', senderID);
         message = "";
     }
@@ -94,7 +94,7 @@ app.post('/whatsapp', async (req, res) => { // creates webhook
         await sendMsg('Starting your day with curated news for you', senderID);
         message = "";
     }
-    else if(message==='projects' || 'chat app'){
+    else if(message==='projects' || message==='chat app'){
         await sendMsg('Here is your chat app: ⚪ https://soumyamondal.com/project/chatapp; Stock Notifier: ⚪ https://soumyamondal.com/project/stockalert', senderID);
         message = "";
     }
@@ -110,15 +110,15 @@ app.post('/whatsapp', async (req, res) => { // creates webhook
         await sendMsg('Here are your websites: ⚪ https://soumyamondal.com; ⚪ https://indgeek.com; ⚪ https://turbohosty.com; ⚪ https://pepeso.com; ⚪ https://ecoesports.com; ⚪ https://truelancing.com; ⚪ https://metatool.in; ⚪ https://nated.in; ', senderID);
         message = "";
     }
-    else if(message==='expenses' || 'expense' || 'cost'){
+    else if(message==='expenses' || message==='expense' || message==='cost'){
         await sendMsg(`Your upcoming expenses: ${expenses}`, senderID);
         message = "";
     }
-    else if(message==='okay' || 'thanks' || 'ok'){
+    else if(message==='okay' || message==='thanks' || message==='ok'){
         await sendMsg('Chalo bye, cya', senderID);
         message = "";
     }
-    else if(message.includes('addurl')){
+    else if(message==='addurl'){
         let urlAdd = message.replace('addurl.', ''); // adding url
         urls.push(urlAdd);
         await sendMsg(urls, senderID);
