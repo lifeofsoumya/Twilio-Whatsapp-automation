@@ -58,67 +58,67 @@ app.post('/whatsapp', async (req, res) => { // creates webhook
     console.log(senderID);
 
     // Write a function to send message back to WhatsApp
-    if(message==='list' || message==='commands' || message==='command'){
+    if(message=='list'){
         await sendMsg('Use the Following commands: Hi | link | resume | github | turn off light | list: | post | my day | projects | indgeek | my site | sites | expense | addurl.site.com', senderID);
         message = "";
     }
-    else if(message==='hi'){
+    else if(message=='hi'){
         await sendMsg('Hello Soumya', senderID);
         message = "";
     }
-    else if(message==='link' || message=== 'links'){
+    else if(message=='links'){
         await sendMsg('Your links are here: https://soumyamondal.com/link', senderID);
         message = "";
     }
-    else if(message==='resume'){
+    else if(message=='resume'){
         await sendMsg('Your Resume link: https://soumyamondal.com/resume', senderID);
         message = "";
     }
-    else if(message==='github'){
+    else if(message=='github'){
         await sendMsg('Your github: https://github.com/lifeofsoumya', senderID);
         message = "";
     }
-    else if(message==='turn off light'){
+    else if(message=='turn off light'){
         await sendMsg('Your light is being turned off', senderID);
         message = "";
     }
-    else if(message==='list:'){
+    else if(message=='list:'){
         await sendMsg('Here is your list:', senderID);
         message = "";
     }
-    else if(message==='post'){
+    else if(message=='post'){
         await sendMsg('Your photo was posted to all social media Platforms', senderID);
         message = "";
     }
-    else if(message==='my day'){
+    else if(message=='my day'){
         await sendMsg('Starting your day with curated news for you', senderID);
         message = "";
     }
-    else if(message==='projects' || message==='chat app'){
+    else if(message=='projects'){
         await sendMsg('Here is your chat app: ⚪ https://soumyamondal.com/project/chatapp; Stock Notifier: ⚪ https://soumyamondal.com/project/stockalert', senderID);
         message = "";
     }
-    else if(message==='my site'){
+    else if(message=='my site'){
         await sendMsg('Here are your site useful links: ⚪ https://soumyamondal.com/about; ⚪ https://soumyamondal.com/newsletter; ⚪ https://soumyamondal.com/blog; ⚪ https://soumyamondal.com/admin; ⚪ https://soumyamondal.com/coffee; ⚪ https://soumyamondal.com/courses; ⚪ https://soumyamondal.com/faq; ', senderID);
         message = "";
     }
-    else if(message==='indgeek'){
+    else if(message=='indgeek'){
         await sendMsg('Here are IndGeek useful links: ⚪ https://indgeek.com/index; ⚪ https://indgeek.com/about-us/; ⚪ https://indgeek.com/contact; ⚪ https://indgeek.com/sitemap/; ⚪ https://indgeek.com/intern/; ⚪ https://indgeek.com/forum/; ', senderID);
         message = "";
     }
-    else if(message==='sites'){
+    else if(message=='sites'){
         await sendMsg('Here are your websites: ⚪ https://soumyamondal.com; ⚪ https://indgeek.com; ⚪ https://turbohosty.com; ⚪ https://pepeso.com; ⚪ https://ecoesports.com; ⚪ https://truelancing.com; ⚪ https://metatool.in; ⚪ https://nated.in; ', senderID);
         message = "";
     }
-    else if(message==='expenses' || message==='expense' || message==='cost'){
+    else if(message=='expense'){
         await sendMsg(`Your upcoming expenses: ${expenses}`, senderID);
         message = "";
     }
-    else if(message==='okay' || message==='thanks' || message==='ok'){
+    else if(message=='okay'){
         await sendMsg('Chalo bye, cya', senderID);
         message = "";
     }
-    else if(message==='addurl'){
+    else if(message=='addurl'){
         let urlAdd = message.replace('addurl.', ''); // adding url
         urls.push(urlAdd);
         await sendMsg(urls, senderID);
