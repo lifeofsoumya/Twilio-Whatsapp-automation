@@ -14,10 +14,10 @@ app.use(bodyParser.urlencoded({
 app.use(bodyParser.json());
 
 
-const PORT = process.env.port || 3000;
+const port = process.env.PORT || 3000;
 
-app.listen(PORT,()=>{
-    console.log(`listening to Port: ${PORT}`)
+app.listen(port,()=>{
+    console.log(`listening to Port: ${port}`)
 })
 
 const accountSid = process.env.TWILIO_ACCOUNT_SID; 
