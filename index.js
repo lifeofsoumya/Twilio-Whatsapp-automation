@@ -23,6 +23,8 @@ app.listen(port,()=>{
 const accountSid = process.env.TWILIO_ACCOUNT_SID; 
 const authToken = process.env.TWILIO_AUTH_TOKEN; 
 let urls = []; 
+let urlAdd;
+let urlArr = [];
 
 const client = require('twilio')(accountSid, authToken, { 
     lazyLoading: true 
@@ -66,7 +68,7 @@ app.post('/whatsapp', async (req, res) => { // creates webhook
         await sendMsg('Hello Soumya', senderID);
         message = "";
     }
-    else if(message==='link' || 'links'){
+    else if(message==='link'){
         await sendMsg('Your links are here: https://soumyamondal.com/link', senderID);
         message = "";
     }
@@ -94,7 +96,7 @@ app.post('/whatsapp', async (req, res) => { // creates webhook
         await sendMsg('Starting your day with curated news for you', senderID);
         message = "";
     }
-    else if(message==='projects' || 'chat app'){
+    else if(message==='projects'){
         await sendMsg('Here is your chat app: ⚪ https://soumyamondal.com/project/chatapp; Stock Notifier: ⚪ https://soumyamondal.com/project/stockalert', senderID);
         message = "";
     }
@@ -110,18 +112,23 @@ app.post('/whatsapp', async (req, res) => { // creates webhook
         await sendMsg('Here are your websites: ⚪ https://soumyamondal.com; ⚪ https://indgeek.com; ⚪ https://turbohosty.com; ⚪ https://pepeso.com; ⚪ https://ecoesports.com; ⚪ https://truelancing.com; ⚪ https://metatool.in; ⚪ https://nated.in; ', senderID);
         message = "";
     }
-    else if(message==='expenses' || 'expense' || 'cost'){
+    else if(message==='expense'){
         await sendMsg(`Your upcoming expenses: ${expenses}`, senderID);
         message = "";
     }
-    else if(message==='okay' || 'thanks' || 'ok'){
+    else if(message==='okay'){
         await sendMsg('Chalo bye, cya', senderID);
         message = "";
     }
     else if(message.includes('addurl')){
-        let urlAdd = message.replace('addurl.', ''); // adding url
+        urlAdd = message.replace('addurl.', ''); // adding url
         urls.push(urlAdd);
-        await sendMsg(urls, senderID);
+        urlArr = [];
+        for(let i = 0; i < urls.length; i++){
+            urlArr.push(urls[i]);
+            urlArr.push(" ⚪ ");
+        }
+        await sendMsg(urlArr, senderID);
         message = "";
     }
 });
