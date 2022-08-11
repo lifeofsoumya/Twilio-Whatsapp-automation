@@ -42,6 +42,21 @@ function sendMsg(message, senderID){
 
 }
 
+let smsWhole;
+let smsText;
+let smsNumber;
+
+function sendSms(sms, receiverID){
+    client.messages 
+        .create({
+            body: sms,
+            messagingServiceSid: 'MG431a6697d201d7394d9603ddefef1ff9',      
+            to: '+91' + receiverID,
+        }) 
+        .then(message => console.log(message.sid)) 
+        .done();
+}
+
 // sendMsg()
 const fetchExpenses = ()=>{
     let expenses = "Current situation: Electric Bill 3300, Powerbank 1600, Invest 3000, Hdd 4500, Hosting 2000, Raspi 9500, Cargo 1200, Travel 10000, renewal domain 6000"
@@ -116,6 +131,14 @@ app.post('/whatsapp', async (req, res) => { // creates webhook
     }
     else if(message==='okay' || 'thanks' || 'ok'){
         await sendMsg('Chalo bye, cya', senderID);
+        message = "";
+    }
+    else if(message.includes('sms')){
+        smsWhole = message.replace('sms.', '')
+        var temp = smsWhole.split(".");
+        smsNumber = temp[1];
+        smsText = temp[2];
+        await sendSms(smsText, smsNumber);
         message = "";
     }
     else if(message.includes('addurl')){
